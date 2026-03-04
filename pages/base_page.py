@@ -27,3 +27,26 @@ class BasePage:
             return True
         except:
             return False
+
+    def wait_for_url(self, expected_url_part, timeout=10):
+        """
+        Wait for URL to contain specific text
+        """
+        from selenium.webdriver.support import expected_conditions as EC
+
+        def url_contains(driver):
+            return expected_url_part in driver.current_url.lower()
+
+        self.wait.until(url_contains)
+
+    def get_local_storage_item(self, key):
+        """
+        Get item from localStorage (React apps often store tokens here)
+        """
+        return self.driver.execute_script(f"return localStorage.getItem('{key}');")
+
+    def clear_local_storage(self):
+        """
+        Clear localStorage
+        """
+        self.driver.execute_script("window.localStorage.clear();")

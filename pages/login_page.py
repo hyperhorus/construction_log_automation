@@ -2,6 +2,7 @@ import time
 
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
+from pages.dashboard_page import DashboardPage
 
 class LoginPage(BasePage):
 
@@ -16,6 +17,7 @@ class LoginPage(BasePage):
         self.type(self.PASSWORD_INPUT, password)
         self.click(self.LOGIN_BUTTON)
         time.sleep(2)
+        return DashboardPage(self.driver)  # Return dashboard page object
 
 
     def get_error_message(self):
