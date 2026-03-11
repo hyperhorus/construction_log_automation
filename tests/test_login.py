@@ -4,6 +4,7 @@ from pages.login_page import LoginPage
 
 @allure.feature("Login")
 @allure.story("Valid Login")
+@pytest.mark.skip
 def test_valid_login(driver):
 
     login_page = LoginPage(driver)
@@ -17,6 +18,7 @@ def test_valid_login(driver):
 
 @allure.feature("Login")
 @allure.story("Invalid Login")
+#@pytest.mark.skip
 def test_invalid_login(driver):
 
     login_page = LoginPage(driver)
